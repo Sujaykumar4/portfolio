@@ -1,231 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sujay Kumar | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujay | Premium Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Professional Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#020617;color:#e2e8f0}
+    <style>
+        :root {
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --bg-dark: #020617;
+            --surface: rgba(15, 23, 42, 0.6);
+            --text-heading: #ffffff;
+            --text-body: #94a3b8;
+            --nav-blur: 15px;
+        }
 
-/* NAV */
-nav{
-position:fixed;top:0;width:100%;
-display:flex;justify-content:space-between;
-padding:12px 20px;
-background:rgba(2,6,23,.7);
-backdrop-filter:blur(10px);
-z-index:999;
-}
-nav a{color:#cbd5f5;text-decoration:none;margin:0 10px}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-/* HERO */
-header{
-min-height:100vh;
-display:flex;flex-direction:column;
-justify-content:center;align-items:center;
-text-align:center;
-background:linear-gradient(135deg,#020617,#0f172a);
-}
-h1{font-size:50px}
-.btn{
-margin-top:20px;
-padding:10px 20px;
-background:#38bdf8;
-color:black;
-border-radius:6px;
-text-decoration:none;
-}
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-/* SECTIONS */
-section{max-width:1100px;margin:auto;padding:70px 20px}
-h2{border-left:4px solid #38bdf8;padding-left:10px;margin-bottom:20px}
+        /* --- Dynamic Background --- */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(129, 140, 248, 0.05) 0%, transparent 40%);
+            filter: blur(80px);
+        }
 
-.card{
-background:#0f172a;
-padding:20px;
-border-radius:12px;
-margin:15px 0;
-opacity:0;
-transform:translateY(20px);
-transition:0.6s;
-}
-.card.show{
-opacity:1;
-transform:translateY(0);
-}
+        /* --- Header / Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(var(--nav-blur));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-}
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -1px;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-.pill{
-background:#38bdf8;
-color:black;
-padding:5px 10px;
-border-radius:20px;
-margin:5px;
-display:inline-block;
-}
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
 
-/* typing */
-.typing{
-border-right:2px solid #38bdf8;
-white-space:nowrap;
-overflow:hidden;
-}
-</style>
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* --- Hero Section --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .hero-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: var(--text-heading);
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn-main {
+            padding: 1.2rem 2.5rem;
+            background: var(--accent);
+            color: #000;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: 0.4s;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 120px 10%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            color: var(--text-heading);
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title span {
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        /* --- Modern Grid & Cards --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .card:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(56, 189, 248, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .pill-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .modern-pill {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 5px 15px;
+            border-radius: 2px;
+        }
+
+        /* --- Mobile --- */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                right: 8%;
+                background: rgba(2, 6, 23, 0.95);
+                padding: 2rem;
+                width: 250px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(20px);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle { display: block; }
+            section { padding: 80px 5%; }
+            h1 { font-size: 4rem; }
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 5rem 10%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
-<div><b>Sujay</b></div>
-<div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#experience">Experience</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
+    <div class="bg-glow"></div>
 
-<header>
-<h1>Sujay Kumar</h1>
-<p>Project Manager | Team Lead | Innovation Coordinator</p>
-<p class="typing" id="typing"></p>
-<a href="#contact" class="btn">Hire Me</a>
-</header>
+    <nav>
+        <a href="#" class="logo">Sujay</a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Work</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+    </nav>
 
-<section id="about">
-<h2>About Me</h2>
-<div class="card">
-Results-driven Project Manager with 2+ years of experience in leading cross-functional teams, managing innovation projects, and delivering impactful outcomes. Strong in stakeholder communication, agile coordination, and execution planning.
-</div>
-</section>
+    <header>
+        <span class="hero-label">Strategizing the Future</span>
+        <h1>Sujay Kumar</h1>
+        <div class="hero-desc">
+            A results-driven <b>Project Manager</b> and <b>Innovation Coordinator</b> specializing in scaling teams through agile methodologies and cutting-edge tech integration.
+        </div>
+        <div class="cta-container">
+            <a href="#experience" class="btn-main">View Career</a>
+            <a href="#contact" style="color: white; text-decoration: none; align-self: center; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px;">LET'S TALK <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </header>
 
-<section id="skills">
-<h2>Skills</h2>
-<div class="card">
-<span class="pill">Project Planning</span>
-<span class="pill">Agile Coordination</span>
-<span class="pill">Risk Management</span>
-<span class="pill">Leadership</span>
-<span class="pill">Python</span>
-<span class="pill">C++</span>
-<span class="pill">AI Tools</span>
-<span class="pill">UI/UX</span>
-</div>
-</section>
+    <section id="about">
+        <h2 class="section-title"><span>01</span> The Narrative</h2>
+        <div class="card" style="max-width: 800px;">
+            <p style="font-size: 1.1rem; color: #f1f5f9;">
+                With over 2 years of experience in leadership roles including <b>E-Cell President</b> and <b>Placement Cell President</b>, I've mastered the art of managing high-stakes environments. My focus is on delivering impactful outcomes through structured planning, stakeholder alignment, and relentless execution.
+            </p>
+        </div>
+    </section>
 
-<section>
-<h2>Tools & Platforms</h2>
-<div class="card">
-MS Office, Google Workspace, Canva, AI Tools, Social Media Platforms, Project Coordination Tools
-</div>
-</section>
+    <section id="skills">
+        <h2 class="section-title"><span>02</span> Architecture</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-microchip card-icon"></i>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Innovation & Tech</h3>
+                <p>Leveraging AI tools and engineering principles to optimize team workflows.</p>
+                <div class="pill-group">
+                    <span class="modern-pill">Python</span>
+                    <span class="modern-pill">C++</span>
+                    <span class="modern-pill">AI Automation</span>
+                    <span class="modern-pill">UI/UX</span>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-halved card-icon"></i>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Project Ops</h3>
+                <p>Expertise in managing cross-functional teams and complex deliverables.</p>
+                <div class="pill-group">
+                    <span class="modern-pill">Agile</span>
+                    <span class="modern-pill">Scrum</span>
+                    <span class="modern-pill">Risk Mitigation</span>
+                    <span class="modern-pill">Milestone Tracking</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="experience">
-<h2>Experience</h2>
+    <section id="experience">
+        <h2 class="section-title"><span>03</span> Milestones</h2>
+        <div class="grid">
+            <div class="card">
+                <span style="color: var(--accent); font-weight: 800; font-size: 0.7rem;">LEADERSHIP</span>
+                <h3 style="color: #fff; margin: 0.5rem 0 1rem 0;">E-Cell President</h3>
+                <p>Spearheaded a 10+ member team, delivering innovation projects that redefined internal productivity benchmarks.</p>
+            </div>
+            <div class="card">
+                <span style="color: var(--accent); font-weight: 800; font-size: 0.7rem;">COORDINATION</span>
+                <h3 style="color: #fff; margin: 0.5rem 0 1rem 0;">IIC Innovation Lead</h3>
+                <p>Managed strategic institutional initiatives, ensuring seamless stakeholder communication and resource allocation.</p>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<b>E-Cell President</b><br>
-- Led 10+ team members and managed innovation projects<br>
-- Defined scope, delegated tasks, tracked milestones<br>
-- Improved team productivity through structured planning
-</div>
+    <section id="contact">
+        <h2 class="section-title"><span>04</span> Connection</h2>
+        <div class="card" style="text-align: center; border: 1px dashed var(--accent);">
+            <h3 style="color: #fff; font-size: 2rem; margin-bottom: 1rem;">Ready for the next sprint?</h3>
+            <p style="margin-bottom: 2rem;">Actively pursuing high-impact internships and leadership opportunities.</p>
+            <a href="mailto:sujaykumarsk12@gmail.com" class="btn-main" style="display: inline-block;">SEND TRANSMISSION</a>
+            <div style="margin-top: 3rem; display: flex; justify-content: center; gap: 2rem;">
+                <a href="https://linkedin.com/in/sujaykumar22" target="_blank" style="color: var(--text-body); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Sujaykumar4" target="_blank" style="color: var(--text-body); font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<b>IIC Innovation Coordinator</b><br>
-- Coordinated innovation initiatives across institutions<br>
-- Managed stakeholder communication and reporting
-</div>
+    <footer>
+        <p style="font-weight: 800; color: #fff;">Sujay Kumar.</p>
+        <p>Built with modern architectural standards. 2026.</p>
+    </footer>
 
-<div class="card">
-<b>Placement Cell President</b><br>
-- Connected 100+ students with opportunities<br>
-- Organized placement drives and career sessions
-</div>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
 
-</section>
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById("navLinks").classList.remove("active");
+            });
+        });
 
-<section>
-<h2>Achievements</h2>
-<div class="grid">
-<div class="card">100+ Students Placed</div>
-<div class="card">50+ Students Mentored</div>
-<div class="card">5+ Events Organized</div>
-<div class="card">Team Lead (10+ Members)</div>
-</div>
-</section>
+        // Scroll Reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('show');
+            });
+        }, { threshold: 0.1 });
 
-<section id="projects">
-<h2>Projects</h2>
-
-<div class="card">
-<b>Smart Study App</b><br>
-Problem → Lack of structured learning<br>
-Solution → All-in-one learning platform<br>
-Impact → 100+ users benefited
-</div>
-
-<div class="card">
-<b>Placement Drive System</b><br>
-Problem → Students unaware of opportunities<br>
-Solution → Central coordination system<br>
-Impact → Connected 100+ students
-</div>
-
-</section>
-
-<section>
-<h2>Why Hire Me</h2>
-<div class="grid">
-<div class="card">Execution Focused</div>
-<div class="card">Leadership Experience</div>
-<div class="card">Real Project Handling</div>
-<div class="card">Innovation Mindset</div>
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<div class="card">
-Email: sujaykumarsk12@gmail.com<br>
-LinkedIn: https://linkedin.com/in/sujaykumar22<br>
-<b>Actively looking for internships</b>
-</div>
-</section>
-
-<script>
-// typing effect
-const text = "I build and manage impactful tech & innovation projects";
-let i = 0;
-function type(){
-if(i < text.length){
-document.getElementById("typing").innerHTML += text.charAt(i);
-i++;
-setTimeout(type,40);
-}
-}
-type();
-
-// scroll animation
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-});
-
-document.querySelectorAll(".card").forEach(el=>observer.observe(el));
-</script>
-
+        document.querySelectorAll('.card').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
